@@ -17,6 +17,7 @@ app.use("/admin", adminRoutes.routes);
 // Shop routes is considered root/home
 app.use(shopRoutes);
 
+// All route matches fail, render 404
 app.use((req, res, next) => {
   res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
 });

@@ -33,38 +33,6 @@
     <main>
       <h1>My Products</h1>
       <p>List of all the products...</p>
-
-      <form action="">
-        <input id="chat" type="text" placeholder="enter message" />
-        <button type="submit">Send</button>
-      </form>
-
-      <div id="chat-box"></div>
     </main>
-
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-      const socket = io();
-      const form = document.querySelector("form");
-      const message = document.getElementById("chat");
-      const userName = prompt("You name?");
-
-      form.addEventListener("submit", e => {
-        e.preventDefault();
-        console.log(message.value);
-        socket.emit("chat", message.value);
-        message.value = "";
-        return false;
-      });
-
-      // For recieving responses from the socket server
-      socket.on("chat", msg => {
-        console.log("receiving");
-        const chatBox = document.getElementById("chat-box");
-        const el = document.createElement("p");
-        el.innerHTML = `<strong>${userName}</strong>&nbsp; &nbsp;` + msg;
-        chatBox.appendChild(el);
-      });
-    </script>
   </body>
 </html>
