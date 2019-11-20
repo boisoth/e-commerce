@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Add Product</title>
+    <link type="text/css" rel="stylesheet" href="/css/main.css" />
+
+    <style>
+      #chat-box {
+        border: solid 1px black;
+        margin: 20px 0 0;
+        padding: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="main-header">
+      <nav class="main-header__nav">
+        <ul class="main-header__item-list">
+          <li class="main-header__item">
+            <a class="active" href="/">Shop</a>
+          </li>
+          <li class="main-header__item">
+            <a href="/admin/add-product">Add Product</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h1>My Products</h1>
+      <p>List of all the products...</p>
+
+      <form action="">
+        <input id="chat" type="text" placeholder="enter message" />
+        <button type="submit">Send</button>
+      </form>
+
+      <div id="chat-box"></div>
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+      const form = document.querySelector("form");
+      const message = document.getElementById("chat");
+      const userName = prompt("You name?");
+
+      form.addEventListener("submit", e => {
+        e.preventDefault();
+        console.log(message.value);
+        socket.emit("chat", message.value);
+        message.value = "";
+        return false;
+      });
+
+      // For recieving responses from the socket server
+      socket.on("chat", msg => {
+        console.log("receiving");
+        const chatBox = document.getElementById("chat-box");
+        const el = document.createElement("p");
+        el.innerHTML = `<strong>${userName}</strong>&nbsp; &nbsp;` + msg;
+        chatBox.appendChild(el);
+      });
+    </script>
+  </body>
+</html>
