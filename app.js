@@ -11,7 +11,9 @@ const shopRoutes = require("./routes/shop");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
+// Admin routes for logged in users
 app.use("/admin", adminRoutes.routes);
+
 // Shop routes is considered root/home
 app.use(shopRoutes);
 
