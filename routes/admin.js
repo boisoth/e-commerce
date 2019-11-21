@@ -12,7 +12,7 @@ const products = [];
 // @access Private
 
 router.get("/add-product", (req, res, next) => {
-  res.sendFile(path.join(rootDir, "views", "add-product.html"));
+  res.render("add-product");
 });
 
 // @route POST /admin/add-product
