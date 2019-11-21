@@ -11,7 +11,7 @@ const router = express.Router();
 // @access Public
 
 router.get("/", (req, res, next) => {
-  res.render("shop");
+  res.render("shop", { docTitle: "Homepage" });
 });
 
 module.exports = router;
