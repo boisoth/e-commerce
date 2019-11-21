@@ -16,7 +16,7 @@ router.get("/add-product", (req, res, next) => {
 });
 
 // @route POST /admin/add-product
-// @desc Submitting a new product from the admin/loggin in user
+// @desc Submitting a new product from the admin/logged in user and redirecting them to homepage
 // @access Private
 
 router.post("/add-product", (req, res, next) => {
