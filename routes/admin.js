@@ -12,7 +12,7 @@ const products = [];
 // @access Private
 
 router.get("/add-product", (req, res, next) => {
-  res.render("add-product");
+  res.render("add-product", { path: "/admin/add-product" });
 });
 
 // @route POST /admin/add-product
