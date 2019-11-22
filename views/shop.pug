@@ -17,5 +17,14 @@ html(lang="en")
             a(href="/admin/add-product") Add Product
 
     main
-      h1 My Products
-      p List of all the products!
+      div.grid
+        article.card.product-item
+          header.card__header
+            h1.product__title
+          div.card__image
+            img(src="", alt="A Book")
+          div.card__content
+            h2.product__price $19.99
+            p.product__description A very interesting book about so many even more interesting things!
+          div.card__actions
+            button.btn Add to Cart
