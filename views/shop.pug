@@ -17,15 +17,18 @@ html(lang="en")
             a(href="/admin/add-product") Add Product
 
     main
-      div.grid
-        each product in prods
-          article.card.product-item
-            header.card__header
-              h1.product__title #{product.title}
-            div.card__image
-              img(src="https://media.istockphoto.com/vectors/open-green-book-flat-design-vector-id960184330?k=6&m=960184330&s=612x612&w=0&h=Wb3a5mbjAQE4yZVvByJsyuNXEdXsWv20YTnwH2qpfL8=", alt="A Book")
-            div.card__content
-              h2.product__price $19.99
-              p.product__description A very interesting book about so many even more interesting things!
-            div.card__actions
-              button.btn Add to Cart
+      if prods.length > 0
+        div.grid
+          each product in prods
+            article.card.product-item
+              header.card__header
+                h1.product__title #{product.title}
+              div.card__image
+                img(src="https://media.istockphoto.com/vectors/open-green-book-flat-design-vector-id960184330?k=6&m=960184330&s=612x612&w=0&h=Wb3a5mbjAQE4yZVvByJsyuNXEdXsWv20YTnwH2qpfL8=", alt="A Book")
+              div.card__content
+                h2.product__price $19.99
+                p.product__description A very interesting book about so many even more interesting things!
+              div.card__actions
+                button.btn Add to Cart
+      else
+        h1 No Products
