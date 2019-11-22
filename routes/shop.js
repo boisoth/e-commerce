@@ -11,7 +11,8 @@ const router = express.Router();
 // @access Public
 
 router.get("/", (req, res, next) => {
-  res.render("shop", { docTitle: "Homepage" });
+  const products = adminData.products;
+  res.render("shop", { prods: products, docTitle: "Homepage" });
 });
 
 module.exports = router;
